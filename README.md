@@ -40,34 +40,43 @@ DROP TABLE IF EXISTS Department;
 ```
 
 Then run in order:
-1. `01_create_table.sql`
-2. `02_insert_into.sql`
+1. `lessons/01_create_table.sql`
+2. `lessons/02_insert_into.sql`
 
 ## Files
 
+All lesson files are in the [lessons/](lessons/) folder.
+
 | File | Topic |
 |------|-------|
-| 01_create_table.sql | CREATE TABLE, data types |
-| 02_insert_into.sql | INSERT INTO |
-| 03_select.sql | SELECT |
-| 04_where.sql | WHERE, BETWEEN, IN |
-| 05_and_or.sql | AND, OR, NOT |
-| 06_order_by.sql | ORDER BY |
-| 07_distinct.sql | DISTINCT |
-| 08_column_alias.sql | Column Alias (AS) |
-| 09_concatenation.sql | Concatenation (\|\|) |
-| 10_dual.sql | DUAL table |
-| 11_like.sql | LIKE, wildcards (%, _) |
-| 12_is_null.sql | IS NULL, IS NOT NULL |
-| 13_string_functions.sql | UPPER, LOWER, SUBSTR, TRIM, LPAD... |
-| 14_number_functions.sql | ROUND, TRUNC, MOD, ABS... |
-| 15_conversion_null_functions.sql | TO_CHAR, COALESCE, NULLIF |
-| 16_aggregate_functions.sql | COUNT, SUM, AVG, MIN, MAX |
-| 17_group_by.sql | GROUP BY |
-| 18_having.sql | HAVING |
-| 19_subquery.sql | Subquery |
-| 20_join.sql | INNER, LEFT, RIGHT, FULL, NATURAL, CROSS JOIN |
-| 21_ddl.sql | ALTER TABLE, DROP, TRUNCATE |
+| lessons/01_create_table.sql | CREATE TABLE, data types |
+| lessons/02_insert_into.sql | INSERT INTO |
+| lessons/03_select.sql | SELECT |
+| lessons/04_where.sql | WHERE, BETWEEN, IN |
+| lessons/05_and_or.sql | AND, OR, NOT |
+| lessons/06_order_by.sql | ORDER BY |
+| lessons/07_distinct.sql | DISTINCT |
+| lessons/08_column_alias.sql | Column Alias (AS) |
+| lessons/09_concatenation.sql | Concatenation (\|\|) |
+| lessons/10_dual.sql | DUAL table |
+| lessons/11_like.sql | LIKE, wildcards (%, _) |
+| lessons/12_is_null.sql | IS NULL, IS NOT NULL |
+| lessons/13_string_functions.sql | UPPER, LOWER, SUBSTR, TRIM, LPAD... |
+| lessons/14_number_functions.sql | ROUND, TRUNC, MOD, ABS... |
+| lessons/15_conversion_null_functions.sql | TO_CHAR, COALESCE, NULLIF |
+| lessons/16_aggregate_functions.sql | COUNT, SUM, AVG, MIN, MAX |
+| lessons/17_group_by.sql | GROUP BY |
+| lessons/18_having.sql | HAVING |
+| lessons/19_subquery.sql | Subquery |
+| lessons/20_join.sql | INNER, LEFT, RIGHT, FULL, NATURAL, CROSS JOIN |
+| lessons/21_ddl.sql | ALTER TABLE, DROP, TRUNCATE |
+| lessons/22_constraints.sql | NOT NULL, UNIQUE, PRIMARY KEY, FOREIGN KEY, CHECK, DEFAULT |
+| lessons/23_indexes.sql | CREATE INDEX, UNIQUE INDEX, DROP INDEX |
+| lessons/24_views.sql | CREATE VIEW, CREATE OR REPLACE VIEW, DROP VIEW |
+| lessons/25_sequences.sql | SERIAL, CREATE SEQUENCE, NEXTVAL |
+| lessons/26_update.sql | UPDATE, SET, WHERE |
+| lessons/27_delete.sql | DELETE, DELETE vs TRUNCATE vs DROP |
+| lessons/28_transactions.sql | COMMIT, ROLLBACK, SAVEPOINT |
 
 ## Source
 

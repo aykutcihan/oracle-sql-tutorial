@@ -90,6 +90,85 @@ CROSS JOIN Department d;
 
 -- CROSS JOIN is rarely used in practice — mainly for generating all combinations
 
+-- ─── SELF JOIN ────────────────────────────────────────────────────────────────
+
+-- SELF JOIN: a table joined with itself
+-- Not a separate JOIN type — uses INNER/LEFT/RIGHT but references the same table twice
+-- Two different aliases are required to treat the same table as two separate tables
+-- Used when you want to compare rows within the same table
+
+-- Find students who are in the same semester as each other
+SELECT a.Name AS Student1, b.Name AS Student2, a.SEM
+FROM Student a
+INNER JOIN Student b ON a.SEM = b.SEM
+WHERE a.ID < b.ID;
+-- a.ID < b.ID prevents matching a student with themselves
+-- and avoids duplicate pairs (AMAN-MOHAN and MOHAN-AMAN)
+
+-- Find students who have the same marks as another student
+SELECT a.Name AS Student1, b.Name AS Student2, a.Marks
+FROM Student a
+INNER JOIN Student b ON a.Marks = b.Marks
+WHERE a.ID < b.ID;
+
+-- ─── JOINING 3 TABLES ────────────────────────────────────────────────────────
+
+-- You can chain multiple JOINs to combine 3 or more tables
+-- Each JOIN adds one more table to the result
+-- SQL processes them left to right: first JOIN produces a result, next JOIN adds to it
+--
+-- Syntax:
+--   FROM table1
+--   JOIN table2 ON table1.col = table2.col
+--   JOIN table3 ON table2.col = table3.col
+--
+-- Our 3 tables and how they link:
+--   Student    → ID, Name, Marks, DeptID
+--   Department → DeptID, DeptName           ← linked to Student via DeptID
+--   Course     → CourseID, CourseName, DeptID ← linked to Department via DeptID
+--
+--   Student.DeptID → Department.DeptID → Course.DeptID
+
+-- Step 1: Student JOIN Department (intermediate result)
+--   AMAN  + Computer Science
+--   MOHAN + Mathematics
+--   ESHA  + Physics
+--   (RAHUL excluded — DeptID is NULL)
+
+-- Step 2: result JOIN Course (final result)
+--   AMAN  + Computer Science + Database Systems
+--   MOHAN + Mathematics      + Calculus
+--   ESHA  + Physics          + Quantum Physics
+
+-- Full query combining all 3 tables
+SELECT s.Name, s.Marks, d.DeptName, c.CourseName
+FROM Student s
+INNER JOIN Department d ON s.DeptID = d.DeptID
+INNER JOIN Course c ON d.DeptID = c.DeptID;
+
+-- With WHERE: only students with marks above 85
+-- WHERE is applied after all JOINs are done
+SELECT s.Name, s.Marks, d.DeptName, c.CourseName
+FROM Student s
+INNER JOIN Department d ON s.DeptID = d.DeptID
+INNER JOIN Course c ON d.DeptID = c.DeptID
+WHERE s.Marks > 85;
+
+-- With ORDER BY: sort by marks descending
+SELECT s.Name, s.Marks, d.DeptName, c.CourseName
+FROM Student s
+INNER JOIN Department d ON s.DeptID = d.DeptID
+INNER JOIN Course c ON d.DeptID = c.DeptID
+ORDER BY s.Marks DESC;
+
+-- Using LEFT JOIN to include students with no department (RAHUL)
+-- LEFT JOIN preserves all Student rows even if no match in Department or Course
+SELECT s.Name, s.Marks, d.DeptName, c.CourseName
+FROM Student s
+LEFT JOIN Department d ON s.DeptID = d.DeptID
+LEFT JOIN Course c ON d.DeptID = c.DeptID;
+-- RAHUL appears with NULL for DeptName and CourseName
+
 -- ─── JOIN TYPES SUMMARY ───────────────────────────────────────────────────────
 --
 --   INNER JOIN       → only matching rows from both tables
@@ -98,3 +177,4 @@ CROSS JOIN Department d;
 --   FULL OUTER JOIN  → all rows from both tables (NULL where no match)
 --   NATURAL JOIN     → like INNER JOIN but join column found automatically by name
 --   CROSS JOIN       → every combination of rows (table1 rows × table2 rows)
+--   SELF JOIN        → table joined with itself to compare rows within same table

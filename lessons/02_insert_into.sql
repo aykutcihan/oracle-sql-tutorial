@@ -18,6 +18,11 @@ INSERT INTO Department VALUES (4, 'Chemistry',        'DR. KHAN');
 -- Chemistry has no students assigned → DeptID=4 appears in Department but not in Student
 -- This makes RIGHT JOIN behavior visible: Chemistry row comes with NULL student columns
 
+INSERT INTO Course VALUES (1, 'Database Systems', 1);
+INSERT INTO Course VALUES (2, 'Calculus',         2);
+INSERT INTO Course VALUES (3, 'Quantum Physics',  3);
+INSERT INTO Course VALUES (4, 'Organic Chemistry',4);
+
 
 -- Syntax 2: INSERT INTO table_name (col1, col2) VALUES (val1, val2);
 --   Specify which columns to fill — unspecified columns get NULL

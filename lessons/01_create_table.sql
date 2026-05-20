@@ -62,3 +62,10 @@ CREATE TABLE Department
   DeptName VARCHAR(30),
   HOD      VARCHAR(30)
 );
+
+CREATE TABLE Course
+(
+  CourseID   INTEGER,
+  CourseName VARCHAR(50),
+  DeptID     INTEGER
+);
