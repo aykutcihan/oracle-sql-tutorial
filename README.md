@@ -1,5 +1,7 @@
 # Oracle SQL Tutorial
 
+Certificate: [Great Learning — Oracle SQL](https://www.mygreatlearning.com/certificate/EMTXKELP)
+
 Practice notes for the **Oracle SQL** course on Great Learning.
 
 The course is Oracle SQL based but all queries are run on **PostgreSQL**.
